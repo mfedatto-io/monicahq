@@ -1,0 +1,53 @@
+name: "Deploy Monica CRM"
+run-name: "${{ github.event_name }} by ${{ github.actor }} #${{ github.run_number }}.${{ github.run_attempt }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: "Reason for running the workflow"
+        required: true
+        default: "Manual trigger"
+
+jobs:
+  deploy-monica-crm:
+    name: "Deploy Monica CRM"
+    runs-on:
+      - "self-hosted"
+    env:
+      ANSIBLE_PROJECT: "${{ vars.ANSIBLE_PROJECT }}"
+      MONICA_CRM_PROJECT: "${{ vars.MONICA_CRM_PROJECT }}"
+      MONICA_DB_NAME: "${{ vars.MONICA_DB_NAME }}"
+      MONICA_DB_USER: "${{ vars.MONICA_DB_USER }}"
+      MONICA_DB_PASSWORD: "${{ secrets.MONICA_DB_PASSWORD }}"
+      CF_ACCOUNT_ID: "${{ secrets.CF_ACCOUNT_ID }}"
+      CF_TUNNEL_API_TOKEN: "${{ secrets.CF_TUNNEL_TOKEN_TANKIAN }}"
+      CF_TUNNEL_NAME: "${{ vars.CF_TUNNEL_NAME }}"
+      CF_ZONE_ID: "${{ secrets.CF_ZONE_ID }}"
+      CF_SERVICE: "${{ vars.CF_SERVICE }}"
+      CF_HOSTNAME: "${{ vars.CF_HOSTNAME }}"
+    steps:
+      - name: "Checkout repository"
+        uses: "actions/checkout@v2"
+      - name: "Copy project to dropfolder"
+        run: |
+          sudo rm -rf ${ANSIBLE_PROJECT}/_dropfolder/monica-crm/*
+          sudo mkdir -p ${ANSIBLE_PROJECT}/_dropfolder/monica-crm
+          sudo chmod 0755 ${ANSIBLE_PROJECT}/_dropfolder/monica-crm
+          sudo cp -r ./docker/* ${ANSIBLE_PROJECT}/_dropfolder/monica-crm/
+      - name: "Run Ansible Playbook"
+        run: |
+          cd ${ANSIBLE_PROJECT}
+          ansible-playbook ${GITHUB_WORKSPACE}/ansible/playbooks/deploy-monica-crm.yml \
+            -i ./inventory/hosts.ini \
+            -e ANSIBLE_PROJECT=${ANSIBLE_PROJECT} \
+            -e MONICA_CRM_PROJECT=${MONICA_CRM_PROJECT} \
+            -e MONICA_DB_NAME=${MONICA_DB_NAME} \
+            -e MONICA_DB_USER=${MONICA_DB_USER} \
+            -e MONICA_DB_PASSWORD=${MONICA_DB_PASSWORD} \
+            -e CF_ACCOUNT_ID=${CF_ACCOUNT_ID} \
+            -e CF_TUNNEL_API_TOKEN=${CF_TUNNEL_API_TOKEN} \
+            -e CF_TUNNEL_NAME=${CF_TUNNEL_NAME} \
+            -e CF_ZONE_ID=${CF_ZONE_ID} \
+            -e CF_SERVICE=${CF_SERVICE} \
+            -e CF_HOSTNAME=${CF_HOSTNAME}

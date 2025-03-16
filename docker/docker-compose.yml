@@ -1,0 +1,63 @@
+name: "panoramicovphc-monica-crm"
+
+x-common-props: &common-props
+  restart: "unless-stopped"
+  dns:
+    - "1.1.1.1"
+    - "4.4.4.4"
+  environment:
+    PUID: "1000"
+    PGID: "1000"
+    TZ: "America/Sao_Paulo"
+  volumes:
+    - "/etc/localtime:/etc/localtime:ro"
+    - "/var/run/docker.sock:/var/run/docker.sock:ro"
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  networks:
+    stack-net:
+
+services:
+
+  panoramicovphc-monica-app:
+    <<: *common-props
+    image: monica
+    container_name: "panoramicovphc-monica-app"
+    hostname: "panoramicovphc-monica-app"
+    environment:
+      APP_KEY: ""
+      DB_HOST: "panoramicovphc-monica-db"
+      DB_DATABASE: "${MONICA_DB_NAME}"
+      DB_USERNAME: "${MONICA_DB_USER}"
+      DB_PASSWORD: "${MONICA_DB_PASSWORD}"
+    volumes:
+      - "panoramicovphc-monica-app-storage:/var/www/html/storage"
+    depends_on:
+      - panoramicovphc-monica-db
+
+  panoramicovphc-monica-db:
+    <<: *common-props
+    image: mariadb:11
+    container_name: "panoramicovphc-monica-db"
+    hostname: "panoramicovphc-monica-db"
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "true"
+      MYSQL_DATABASE: "${MONICA_DB_NAME}"
+      MYSQL_USER: "${MONICA_DB_USER}"
+      MYSQL_PASSWORD: "${MONICA_DB_PASSWORD}"
+    volumes:
+      - "panoramicovphc-monica-db-data:/var/lib/mysql"
+    networks:
+      panoramicovphc-db-net:
+
+networks:
+  panoramicovphc-vpc-net:
+    external: true
+  panoramicovphc-db-net:
+    external: true
+
+volumes:
+  panoramicovphc-monica-app-storage:
+    external: true
+  panoramicovphc-monica-db-data:
+    external: true
