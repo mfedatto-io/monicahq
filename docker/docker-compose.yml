@@ -21,7 +21,7 @@ services:
 
   panoramicovphc-monica-app:
     <<: *common-props
-    image: monica
+    image: "monica"
     container_name: "panoramicovphc-monica-app"
     hostname: "panoramicovphc-monica-app"
     environment:
@@ -32,12 +32,14 @@ services:
       DB_PASSWORD: "${MONICA_DB_PASSWORD}"
     volumes:
       - "panoramicovphc-monica-app-storage:/var/www/html/storage"
+    ports:
+      - "8781:80"
     depends_on:
-      - panoramicovphc-monica-db
+      - "panoramicovphc-monica-db"
 
   panoramicovphc-monica-db:
     <<: *common-props
-    image: mariadb:11
+    image: "mariadb:11"
     container_name: "panoramicovphc-monica-db"
     hostname: "panoramicovphc-monica-db"
     environment:
