@@ -17,6 +17,7 @@ jobs:
     env:
       ANSIBLE_PROJECT: "${{ vars.ANSIBLE_PROJECT }}"
       MONICA_CRM_PROJECT: "${{ vars.MONICA_CRM_PROJECT }}"
+      LARAVEL_APP_KEY: "${{ secrets.LARAVEL_APP_KEY }}"
       MONICA_DB_NAME: "${{ vars.MONICA_DB_NAME }}"
       MONICA_DB_USER: "${{ vars.MONICA_DB_USER }}"
       MONICA_DB_PASSWORD: "${{ secrets.MONICA_DB_PASSWORD }}"
