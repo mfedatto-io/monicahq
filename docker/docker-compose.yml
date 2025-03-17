@@ -23,7 +23,7 @@ services:
     container_name: "panoramicovphc-monica-app"
     hostname: "panoramicovphc-monica-app"
     environment:
-      APP_KEY: ""
+      APP_KEY: "${APP_KEY}"
       DB_HOST: "panoramicovphc-monica-db"
       DB_DATABASE: "${MONICA_DB_NAME}"
       DB_USERNAME: "${MONICA_DB_USER}"

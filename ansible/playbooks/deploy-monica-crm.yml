@@ -209,6 +209,7 @@
       copy:
         dest: "{{ MONICA_CRM_PROJECT }}/.env"
         content: |
+          APP_KEY={{ LARAVEL_APP_KEY }}
           MONICA_DB_NAME={{ MONICA_DB_NAME }}
           MONICA_DB_USER={{ MONICA_DB_USER }}
           MONICA_DB_PASSWORD={{ MONICA_DB_PASSWORD }}
