@@ -32,6 +32,8 @@ services:
       DB_PASSWORD: "${MONICA_DB_PASSWORD}"
     volumes:
       - "panoramicovphc-monica-app-storage:/var/www/html/storage"
+    networks:
+      panoramicovphc-vpc-net:
     ports:
       - "8781:80"
     depends_on:
