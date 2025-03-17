@@ -43,6 +43,7 @@ jobs:
             -i ./inventory/hosts.ini \
             -e ANSIBLE_PROJECT=${ANSIBLE_PROJECT} \
             -e MONICA_CRM_PROJECT=${MONICA_CRM_PROJECT} \
+            -e LARAVEL_APP_KEY=${LARAVEL_APP_KEY} \
             -e MONICA_DB_NAME=${MONICA_DB_NAME} \
             -e MONICA_DB_USER=${MONICA_DB_USER} \
             -e MONICA_DB_PASSWORD=${MONICA_DB_PASSWORD} \
