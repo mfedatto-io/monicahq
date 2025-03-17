@@ -14,8 +14,6 @@ x-common-props: &common-props
     - "/var/run/docker.sock:/var/run/docker.sock:ro"
   extra_hosts:
     - "host.docker.internal:host-gateway"
-  networks:
-    stack-net:
 
 services:
 
@@ -33,6 +31,7 @@ services:
     volumes:
       - "panoramicovphc-monica-app-storage:/var/www/html/storage"
     networks:
+      stack-net:
       panoramicovphc-vpc-net:
     ports:
       - "8781:80"
@@ -52,6 +51,7 @@ services:
     volumes:
       - "panoramicovphc-monica-db-data:/var/lib/mysql"
     networks:
+      stack-net:
       panoramicovphc-db-net:
 
 networks:
