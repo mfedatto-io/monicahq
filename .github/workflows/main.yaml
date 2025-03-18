@@ -49,23 +49,23 @@ jobs:
           cd ${ANSIBLE_PROJECT}
           ansible-playbook ${GITHUB_WORKSPACE}/ansible/playbooks/deploy-monica-crm.yml \
             -i ./inventory/hosts.ini \
-            -e ANSIBLE_PROJECT=${ANSIBLE_PROJECT} \
-            -e MONICA_CRM_PROJECT=${MONICA_CRM_PROJECT} \
-            -e LARAVEL_APP_KEY=${LARAVEL_APP_KEY} \
-            -e MONICA_DB_NAME=${MONICA_DB_NAME} \
-            -e MONICA_DB_USER=${MONICA_DB_USER} \
-            -e MONICA_DB_PASSWORD=${MONICA_DB_PASSWORD} \
-            -e MAIL_DRIVER=${MAIL_DRIVER} \
-            -e MAIL_HOST=${MAIL_HOST} \
-            -e MAIL_PORT=${MAIL_PORT} \
-            -e MAIL_USERNAME=${MAIL_USERNAME} \
-            -e MAIL_PASSWORD=${MAIL_PASSWORD} \
-            -e MAIL_FROM_ADDRESS=${MAIL_FROM_ADDRESS} \
-            -e MAIL_FROM_NAME=${MAIL_FROM_NAME} \
-            -e MAIL_ENCRYPTION=${MAIL_ENCRYPTION} \
-            -e CF_ACCOUNT_ID=${CF_ACCOUNT_ID} \
-            -e CF_TUNNEL_API_TOKEN=${CF_TUNNEL_API_TOKEN} \
-            -e CF_TUNNEL_NAME=${CF_TUNNEL_NAME} \
-            -e CF_ZONE_ID=${CF_ZONE_ID} \
-            -e CF_SERVICE=${CF_SERVICE} \
-            -e CF_HOSTNAME=${CF_HOSTNAME}
+            -e "ANSIBLE_PROJECT=${ANSIBLE_PROJECT}" \
+            -e "MONICA_CRM_PROJECT=${MONICA_CRM_PROJECT}" \
+            -e "LARAVEL_APP_KEY=${LARAVEL_APP_KEY}" \
+            -e "MONICA_DB_NAME=${MONICA_DB_NAME}" \
+            -e "MONICA_DB_USER=${MONICA_DB_USER}" \
+            -e "MONICA_DB_PASSWORD=${MONICA_DB_PASSWORD}" \
+            -e "MAIL_DRIVER=${MAIL_DRIVER}" \
+            -e "MAIL_HOST=${MAIL_HOST}" \
+            -e "MAIL_PORT=${MAIL_PORT}" \
+            -e "MAIL_USERNAME=${MAIL_USERNAME}" \
+            -e "MAIL_PASSWORD=${MAIL_PASSWORD}" \
+            -e "MAIL_FROM_ADDRESS=${MAIL_FROM_ADDRESS}" \
+            -e "MAIL_FROM_NAME=${MAIL_FROM_NAME}" \
+            -e "MAIL_ENCRYPTION=${MAIL_ENCRYPTION}" \
+            -e "CF_ACCOUNT_ID=${CF_ACCOUNT_ID}" \
+            -e "CF_TUNNEL_API_TOKEN=${CF_TUNNEL_API_TOKEN}" \
+            -e "CF_TUNNEL_NAME=${CF_TUNNEL_NAME}" \
+            -e "CF_ZONE_ID=${CF_ZONE_ID}" \
+            -e "CF_SERVICE=${CF_SERVICE}" \
+            -e "CF_HOSTNAME=${CF_HOSTNAME}"
