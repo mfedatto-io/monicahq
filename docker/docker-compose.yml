@@ -28,6 +28,12 @@ services:
       DB_DATABASE: "${MONICA_DB_NAME}"
       DB_USERNAME: "${MONICA_DB_USER}"
       DB_PASSWORD: "${MONICA_DB_PASSWORD}"
+      MAIL_DRIVER: "${MAIL_DRIVER}"
+      MAIL_HOST: "${MAIL_HOST}"
+      MAIL_PORT: "${MAIL_PORT}"
+      MAIL_USERNAME: "${MAIL_USERNAME}"
+      MAIL_PASSWORD: "${MAIL_PASSWORD}"
+      MAIL_ENCRYPTION: "${MAIL_ENCRYPTION}"
     volumes:
       - "panoramicovphc-monica-app-storage:/var/www/html/storage"
     networks:

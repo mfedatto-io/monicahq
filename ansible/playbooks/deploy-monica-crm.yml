@@ -213,6 +213,12 @@
           MONICA_DB_NAME={{ MONICA_DB_NAME }}
           MONICA_DB_USER={{ MONICA_DB_USER }}
           MONICA_DB_PASSWORD={{ MONICA_DB_PASSWORD }}
+          MAIL_DRIVER={{ MAIL_DRIVER }}
+          MAIL_HOST={{ MAIL_HOST }}
+          MAIL_PORT={{ MAIL_PORT }}
+          MAIL_USERNAME={{ MAIL_USERNAME }}
+          MAIL_PASSWORD={{ MAIL_PASSWORD }}
+          MAIL_ENCRYPTION={{ MAIL_ENCRYPTION }}
       when: |
         hostvars[inventory_hostname].CF_TUNNEL_TOKEN is defined
 

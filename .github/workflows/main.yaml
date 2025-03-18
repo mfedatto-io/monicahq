@@ -21,6 +21,12 @@ jobs:
       MONICA_DB_NAME: "${{ vars.MONICA_DB_NAME }}"
       MONICA_DB_USER: "${{ vars.MONICA_DB_USER }}"
       MONICA_DB_PASSWORD: "${{ secrets.MONICA_DB_PASSWORD }}"
+      MAIL_DRIVER: "${{ vars.MAIL_DRIVER }}"
+      MAIL_HOST: "${{ vars.MAIL_HOST }}"
+      MAIL_PORT: "${{ vars.MAIL_PORT }}"
+      MAIL_USERNAME: "${{ vars.MAIL_USERNAME }}"
+      MAIL_PASSWORD: "${{ secrets.MAIL_PASSWORD }}"
+      MAIL_ENCRYPTION: "${{ vars.MAIL_ENCRYPTION }}"
       CF_ACCOUNT_ID: "${{ secrets.CF_ACCOUNT_ID }}"
       CF_TUNNEL_API_TOKEN: "${{ secrets.CF_TUNNEL_TOKEN_TANKIAN }}"
       CF_TUNNEL_NAME: "${{ vars.CF_TUNNEL_NAME }}"
@@ -47,6 +53,12 @@ jobs:
             -e MONICA_DB_NAME=${MONICA_DB_NAME} \
             -e MONICA_DB_USER=${MONICA_DB_USER} \
             -e MONICA_DB_PASSWORD=${MONICA_DB_PASSWORD} \
+            -e MAIL_DRIVER=${MAIL_DRIVER} \
+            -e MAIL_HOST=${MAIL_HOST} \
+            -e MAIL_PORT=${MAIL_PORT} \
+            -e MAIL_USERNAME=${MAIL_USERNAME} \
+            -e MAIL_PASSWORD=${MAIL_PASSWORD} \
+            -e MAIL_ENCRYPTION=${MAIL_ENCRYPTION} \
             -e CF_ACCOUNT_ID=${CF_ACCOUNT_ID} \
             -e CF_TUNNEL_API_TOKEN=${CF_TUNNEL_API_TOKEN} \
             -e CF_TUNNEL_NAME=${CF_TUNNEL_NAME} \
