@@ -26,6 +26,8 @@ jobs:
       MAIL_PORT: "${{ vars.MAIL_PORT }}"
       MAIL_USERNAME: "${{ vars.MAIL_USERNAME }}"
       MAIL_PASSWORD: "${{ secrets.MAIL_PASSWORD }}"
+      MAIL_FROM_ADDRESS: "${{ vars.MAIL_FROM_ADDRESS }}"
+      MAIL_FROM_NAME: "${{ vars.MAIL_FROM_NAME }}"
       MAIL_ENCRYPTION: "${{ vars.MAIL_ENCRYPTION }}"
       CF_ACCOUNT_ID: "${{ secrets.CF_ACCOUNT_ID }}"
       CF_TUNNEL_API_TOKEN: "${{ secrets.CF_TUNNEL_API_TOKEN }}"
@@ -58,6 +60,8 @@ jobs:
             -e MAIL_PORT=${MAIL_PORT} \
             -e MAIL_USERNAME=${MAIL_USERNAME} \
             -e MAIL_PASSWORD=${MAIL_PASSWORD} \
+            -e MAIL_FROM_ADDRESS=${MAIL_FROM_ADDRESS} \
+            -e MAIL_FROM_NAME=${MAIL_FROM_NAME} \
             -e MAIL_ENCRYPTION=${MAIL_ENCRYPTION} \
             -e CF_ACCOUNT_ID=${CF_ACCOUNT_ID} \
             -e CF_TUNNEL_API_TOKEN=${CF_TUNNEL_API_TOKEN} \
