@@ -227,21 +227,21 @@
     - name: "Ensure Docker networks exist"
       mkh_ensure_docker_network:
         networks:
-          - name: "panoramicovphc-vpc-net"
-          - name: "panoramicovphc-db-net"
+          - name: "mfedattoio-vpc-net"
+          - name: "mfedattoio-db-net"
 
     - name: "Ensure Docker volumes meet expectations"
       mkh_ensure_docker_volume:
         volumes:
-          - name: "panoramicovphc-monica-app-storage"
+          - name: "mfedattoio-monica-app-storage"
             device:
-              path: "/mkh/srv/panoramicovphc/monica-app-storage"
+              path: "/mkh/srv/mfedattoio/monica-app-storage"
               permissions: '0755'
               puid: '1000'
               pgid: '1000'
-          - name: "panoramicovphc-monica-db-data"
+          - name: "mfedattoio-monica-db-data"
             device:
-              path: "/mkh/srv/panoramicovphc/monica-db-data"
+              path: "/mkh/srv/mfedattoio/monica-db-data"
               permissions: '0755'
               puid: '1000'
               pgid: '1000'
