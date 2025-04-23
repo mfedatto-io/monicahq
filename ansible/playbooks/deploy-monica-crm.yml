@@ -235,13 +235,13 @@
         volumes:
           - name: "mfedattoio-monica-app-storage"
             device:
-              path: "/mkh/srv/mfedattoio/monica-app-storage"
+              path: "/mkh/srv/mfedatto.io/monica-app-storage"
               permissions: '0755'
               puid: '1000'
               pgid: '1000'
           - name: "mfedattoio-monica-db-data"
             device:
-              path: "/mkh/srv/mfedattoio/monica-db-data"
+              path: "/mkh/srv/mfedatto.io/monica-db-data"
               permissions: '0755'
               puid: '1000'
               pgid: '1000'
