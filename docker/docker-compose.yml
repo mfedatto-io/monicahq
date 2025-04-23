@@ -1,4 +1,4 @@
-name: "panoramicovphc-monica-crm"
+name: "mfedattoio-monica-crm"
 
 x-common-props: &common-props
   restart: "unless-stopped"
@@ -17,14 +17,14 @@ x-common-props: &common-props
 
 services:
 
-  panoramicovphc-monica-app:
+  mfedattoio-monica-app:
     <<: *common-props
     image: "monica"
-    container_name: "panoramicovphc-monica-app"
-    hostname: "panoramicovphc-monica-app"
+    container_name: "mfedattoio-monica-app"
+    hostname: "mfedattoio-monica-app"
     environment:
       APP_KEY: "${APP_KEY}"
-      DB_HOST: "panoramicovphc-monica-db"
+      DB_HOST: "mfedattoio-monica-db"
       DB_DATABASE: "${MONICA_DB_NAME}"
       DB_USERNAME: "${MONICA_DB_USER}"
       DB_PASSWORD: "${MONICA_DB_PASSWORD}"
@@ -37,41 +37,41 @@ services:
       MAIL_PASSWORD: "${MAIL_PASSWORD}"
       MAIL_ENCRYPTION: "${MAIL_ENCRYPTION}"
     volumes:
-      - "panoramicovphc-monica-app-storage:/var/www/html/storage"
+      - "mfedattoio-monica-app-storage:/var/www/html/storage"
     networks:
       stack-net:
-      panoramicovphc-vpc-net:
+      mfedattoio-vpc-net:
     ports:
       - "8781:80"
     depends_on:
-      - "panoramicovphc-monica-db"
+      - "mfedattoio-monica-db"
 
-  panoramicovphc-monica-db:
+  mfedattoio-monica-db:
     <<: *common-props
     image: "mariadb:11"
-    container_name: "panoramicovphc-monica-db"
-    hostname: "panoramicovphc-monica-db"
+    container_name: "mfedattoio-monica-db"
+    hostname: "mfedattoio-monica-db"
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: "true"
       MYSQL_DATABASE: "${MONICA_DB_NAME}"
       MYSQL_USER: "${MONICA_DB_USER}"
       MYSQL_PASSWORD: "${MONICA_DB_PASSWORD}"
     volumes:
-      - "panoramicovphc-monica-db-data:/var/lib/mysql"
+      - "mfedattoio-monica-db-data:/var/lib/mysql"
     networks:
       stack-net:
-      panoramicovphc-db-net:
+      mfedattoio-db-net:
 
 networks:
   stack-net:
     driver: "bridge"
-  panoramicovphc-vpc-net:
+  mfedattoio-vpc-net:
     external: true
-  panoramicovphc-db-net:
+  mfedattoio-db-net:
     external: true
 
 volumes:
-  panoramicovphc-monica-app-storage:
+  mfedattoio-monica-app-storage:
     external: true
-  panoramicovphc-monica-db-data:
+  mfedattoio-monica-db-data:
     external: true
