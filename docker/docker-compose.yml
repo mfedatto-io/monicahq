@@ -41,8 +41,6 @@ services:
     networks:
       stack-net:
       mfedattoio-vpc-net:
-    ports:
-      - "8781:80"
     depends_on:
       - "mfedattoio-monica-db"
 
